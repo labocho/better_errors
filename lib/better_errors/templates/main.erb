@@ -919,10 +919,11 @@
     };
 
     function switchTo(el) {
-        if(previousFrameInfo) previousFrameInfo.style.display = "none";
+        if(previousFrameInfo) previousFrameInfo.style.visibility = "hidden";
         previousFrameInfo = el;
 
         el.style.display = "block";
+        el.style.visibility = "visible";
 
         var replInput = el.querySelector('.console input');
         if (replInput) replInput.focus();
