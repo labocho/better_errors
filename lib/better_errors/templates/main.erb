@@ -942,6 +942,15 @@
                     el.innerHTML = "<span class='error'>" + escapeHTML(response.error) + "</span>";
                 } else {
                     el.innerHTML = response.html;
+                    el.querySelector(".show_variable_info_body").addEventListener("click", function(e) {
+                        var container;
+                        e.preventDefault();
+                        container = el.querySelector(".variable_info_body");
+                        container.innerText = "Loading...";
+                        window.setTimeout(function(){
+                            container.innerHTML = response.variable_info_body_html;
+                        }, 10);
+                    });
 
                     var repl = el.querySelector(".repl .console");
                     if(repl) {

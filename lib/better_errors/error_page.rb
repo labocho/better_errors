@@ -34,7 +34,9 @@ module BetterErrors
       index = opts["index"].to_i
       @frame = backtrace_frames[index]
       @var_start_time = Time.now.to_f
-      { html: render("variable_info") }
+      { html: render("variable_info"),
+        variable_info_body_html: render("variable_info_body"),
+      }
     end
 
     def do_eval(opts)
