@@ -107,6 +107,14 @@ module BetterErrors
       str + "\n" + char*str.size
     end
 
+    def pretty_inspect_value(obj)
+      CGI.escapeHTML(obj.pretty_inspect)
+    rescue NoMethodError
+      "<span class='unsupported'>(object doesn't support inspect)</span>"
+    rescue Exception
+      "<span class='unsupported'>(exception was raised in inspect)</span>"
+    end
+
     def inspect_value(obj)
       CGI.escapeHTML(obj.inspect)
     rescue NoMethodError
